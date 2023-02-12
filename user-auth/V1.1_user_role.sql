@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS app_user(
 	username			VARCHAR(255) NOT NULL,
 	uuid				VARCHAR(255) ,
 	"password" 			VARCHAR(500) NOT NULL,
-	"name"				VARCHAR(500) NOT NULL,
-	date_of_birth		TIMESTAMP	NOT NULL,
+	"name"				VARCHAR(500) NOT NULL,	
+	birthday			TIMESTAMP	NOT NULL,
 	email 				VARCHAR(255) NOT NULL,
 	identity_card		VARCHAR(50),
 	"address"			VARCHAR(500),
@@ -94,34 +94,3 @@ CREATE TRIGGER set_current_timestamp
 BEFORE UPDATE ON roles_permissions
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_current_timestamp();
-
-CREATE TABLE IF NOT EXISTS request_roles(
-	id						BIGSERIAL PRIMARY KEY,
-	user_id					BIGINT NOT NULL,
-	role_id					BIGINT NOT NULL,
-	"status"				VARCHAR(50) NOT NULL,
-	old_role_id				BIGINT,
-	created_at				TIMESTAMP DEFAULT NOW(),
-	request_type			VARCHAR(50) NOT NULL DEFAULT 'USER',
-	FOREIGN KEY (user_id) REFERENCES app_user(id),
-	FOREIGN KEY (role_id) REFERENCES roles(id),
-	FOREIGN KEY (old_role_id) REFERENCES roles(id)
-);
-
-CREATE TABLE IF NOT EXISTS menu (
-	id					BIGSERIAL PRIMARY KEY,
-	"name"				VARCHAR(200) NOT NULL,
-	code				VARCHAR(200) NOT NULL UNIQUE,
-	page_url			VARCHAR(255) NOT NULL,
-	parent				BIGINT,
-	is_ignore			BOOLEAN NOT NULL DEFAULT FALSE,
-	"index"				INT DEFAULT 0
-);
-
-CREATE TABLE IF NOT EXISTS public.menu_permissions(
-	id					BIGSERIAL PRIMARY KEY,
-	menu_id				BIGINT NOT NULL,
-	permission_id		BIGINT NOT NULL,
-	FOREIGN KEY(menu_id) REFERENCES menu(id),
-	FOREIGN KEY(permission_id) REFERENCES public.permissions(id)
-);
