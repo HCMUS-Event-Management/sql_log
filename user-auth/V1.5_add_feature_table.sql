@@ -14,3 +14,12 @@ alter table public.roles_permissions
 	drop column if exists permission_id; 
 
 drop table if exists permissions;
+
+alter table roles_permissions
+    add column if not exists read BOOLEAN default false;
+
+alter table roles_permissions
+    add column if not exists write BOOLEAN default false;
+
+alter table roles_permissions
+    add column if not exists approve BOOLEAN default false;
