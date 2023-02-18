@@ -1,0 +1,1 @@
+insert into PUBLIC.roles_permissions (feature_id, read, write, approve, role_id) values (1,true, true, false, 1);
