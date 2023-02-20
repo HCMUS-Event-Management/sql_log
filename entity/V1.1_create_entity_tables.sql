@@ -63,7 +63,7 @@ EXECUTE PROCEDURE trigger_set_current_timestamp();
 
 DROP TABLE IF EXISTS notifications;
 CREATE TABLE IF NOT EXISTS notifications(
-	id			BIGSERIAL PRIMARY KEY,
+	id				BIGSERIAL PRIMARY KEY,
 	receiver_id		BIGINT,
 	content			VARCHAR(500) NOT NULL,
 	linknoti		VARCHAR(255),
@@ -83,23 +83,23 @@ EXECUTE PROCEDURE trigger_set_current_timestamp();
 
 DROP TABLE IF EXISTS events;
 CREATE TABLE IF NOT EXISTS events(
-	id			BIGSERIAL PRIMARY KEY,
-	title			VARCHAR(255) NOT NULL,
-	"description" 		VARCHAR(500) NOT NULL,
-	open_time		TIMESTAMP NOT NULL,
-	due_time 		TIME NOT NULL,
-	start_at		TIMESTAMP,
-	end_at			TIMESTAMP,
-	"status"		VARCHAR(500), --?????
-	url_web 		VARCHAR(500) NOT NULL,
-	category_id		BIGINT,
-	created_by		BIGINT NOT NULL,
+	id			        BIGSERIAL PRIMARY KEY,
+	title			    VARCHAR(255) NOT NULL,
+	"description" 	    VARCHAR(500) NOT NULL,
+	open_time		    TIMESTAMP NOT NULL,
+	due_time 		    TIME NOT NULL,
+	start_at		    TIMESTAMP,
+	end_at			    TIMESTAMP,
+	"status"		    VARCHAR(500), --?????
+	url_web 		    VARCHAR(500) NOT NULL,
+	category_id		    BIGINT,
+	created_by		    BIGINT NOT NULL,
 	notifications_id	BIGINT,
-	images			TEXT[],
-	"location"		VARCHAR(500),
+	images			    TEXT[],
+	"location"		    VARCHAR(500),
 	seating_plan		VARCHAR(500),
-	created_at 		TIMESTAMP DEFAULT NOW(),
-	updated_at		TIMESTAMP DEFAULT NOW(),
+	created_at 		    TIMESTAMP DEFAULT NOW(),
+	updated_at		    TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY(image_id) REFERENCES images(id),
 	FOREIGN KEY(category_id) REFERENCES categories(id),
 	FOREIGN KEY(created_by) REFERENCES users(id),
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS "session"(
 
 DROP TABLE IF EXISTS "reviews";
 CREATE TABLE IF NOT EXISTS "reviews"(
-	id			BIGSERIAL PRIMARY KEY,
+	id			    BIGSERIAL PRIMARY KEY,
 	"user_id"		BIGINT NOT NULL,
 	"event_id" 		BIGINT,
 	"content"		VARCHAR(500),

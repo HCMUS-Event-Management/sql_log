@@ -34,3 +34,6 @@
 * datnd:
     - thêm data của bảng users vào (V1.8)
     - tạo các bảng trong entity service (V1.9)
+10. 20/02/2023
+* datnd:
+    - Sửa lại 1 số column các bảng trong entity service (V1.9)
