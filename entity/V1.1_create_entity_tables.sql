@@ -14,15 +14,15 @@ CREATE TABLE IF NOT EXISTS users(
 	email 				VARCHAR(255) NOT NULL,
 	phone				VARCHAR(20),
 	birthday			DATE,
-	identity_card			VARCHAR(50),
+	identity_card		VARCHAR(50),
 	gender				VARCHAR(50),
-	avatar      			VARCHAR(500),
+	avatar      		VARCHAR(500),
 	"address"			VARCHAR(255),
 	is_active			BOOLEAN DEFAULT FALSE,
 	is_deleted			BOOLEAN DEFAULT FALSE,
 	created_at 			TIMESTAMP DEFAULT NOW(),
 	updated_at			TIMESTAMP DEFAULT NOW(),
-    	last_login			TIMESTAMP 
+    last_login			TIMESTAMP 
 );
 
  --Set timestamp when updating user
