@@ -34,15 +34,6 @@ CREATE TRIGGER set_current_timestamp
 	FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_current_timestamp();
 
-DROP TABLE IF EXISTS event_users;
-CREATE TABLE IF NOT EXISTS event_managers(
-	id			bigserial PRIMARY KEY,
-	"user_id"		BIGINT,
-	"event_id" 		BIGINT,
-	FOREIGN KEY("user_id") REFERENCES users(id),
-	FOREIGN KEY("event_id") REFERENCES events(id)
-);
-
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
 	id bigserial PRIMARY KEY,
@@ -50,7 +41,6 @@ CREATE TABLE categories (
 	created_at timestamp  DEFAULT now(),
 	updated_at timestamp  DEFAULT now()
 );
-
 
 -- Set timestamp when updating categories
 DROP TRIGGER IF EXISTS set_current_timestamp on categories;
@@ -100,12 +90,20 @@ CREATE TABLE IF NOT EXISTS events(
 	seating_plan		VARCHAR(500),
 	created_at 		    TIMESTAMP DEFAULT NOW(),
 	updated_at		    TIMESTAMP DEFAULT NOW(),
-	FOREIGN KEY(image_id) REFERENCES images(id),
 	FOREIGN KEY(category_id) REFERENCES categories(id),
 	FOREIGN KEY(created_by) REFERENCES users(id),
-	FOREIGN KEY(event_managers_id) REFERENCES event_managers(id),
 	FOREIGN KEY(notifications_id) REFERENCES notifications(id)
 );
+
+DROP TABLE IF EXISTS event_users;
+CREATE TABLE IF NOT EXISTS event_users(
+	id			bigserial PRIMARY KEY,
+	"user_id"		BIGINT,
+	"event_id" 		BIGINT,
+	FOREIGN KEY("user_id") REFERENCES users(id),
+	FOREIGN KEY("event_id") REFERENCES events(id)
+);
+
 -- Set timestamp when updating events
 drop trigger if exists set_current_timestamp on events;
 create trigger set_current_timestamp
@@ -114,7 +112,6 @@ create trigger set_current_timestamp
 		events 
 	for each row
 execute procedure trigger_set_current_timestamp();
-
 
 DROP TABLE IF EXISTS products;
 CREATE TABLE IF NOT EXISTS products(
@@ -184,7 +181,6 @@ CREATE TABLE IF NOT EXISTS "session"(
 	FOREIGN KEY(event_id) REFERENCES events(id),
 	FOREIGN KEY("comment_id") REFERENCES "comments"(id)
 );
-
 
 DROP TABLE IF EXISTS "reviews";
 CREATE TABLE IF NOT EXISTS "reviews"(
