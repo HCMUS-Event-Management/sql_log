@@ -32,6 +32,7 @@ DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
 	id bigserial PRIMARY KEY,
 	"name" varchar(255),
+	description varchar(500),
 	created_at timestamp  DEFAULT now(),
 	updated_at timestamp  DEFAULT now()
 );
