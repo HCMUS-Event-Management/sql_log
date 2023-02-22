@@ -8,21 +8,15 @@ $$ LANGUAGE plpgsql;
 -- End of procedure
 DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users(
-	id				BIGSERIAL	PRIMARY KEY,
-	"password" 			VARCHAR(500) NOT NULL,
+	id					BIGSERIAL	PRIMARY KEY,
 	full_name			VARCHAR(50),
 	email 				VARCHAR(255) NOT NULL,
 	phone				VARCHAR(20),
-	birthday			DATE,
 	identity_card		VARCHAR(50),
 	gender				VARCHAR(50),
-	avatar      		VARCHAR(500),
 	"address"			VARCHAR(255),
 	is_active			BOOLEAN DEFAULT FALSE,
-	is_deleted			BOOLEAN DEFAULT FALSE,
-	created_at 			TIMESTAMP DEFAULT NOW(),
-	updated_at			TIMESTAMP DEFAULT NOW(),
-    last_login			TIMESTAMP 
+	is_deleted			BOOLEAN DEFAULT FALSE
 );
 
  --Set timestamp when updating user
@@ -75,9 +69,10 @@ CREATE TABLE IF NOT EXISTS events(
 
 DROP TABLE IF EXISTS event_users;
 CREATE TABLE IF NOT EXISTS event_users(
-	id			bigserial PRIMARY KEY,
+	id				BIGSERIAL PRIMARY KEY,
 	"user_id"		BIGINT,
 	"event_id" 		BIGINT,
+	event_role		VARCHAR(50),
 	FOREIGN KEY("user_id") REFERENCES users(id),
 	FOREIGN KEY("event_id") REFERENCES events(id)
 );
@@ -115,20 +110,20 @@ EXECUTE PROCEDURE trigger_set_current_timestamp();
 
 DROP TABLE IF EXISTS products;
 CREATE TABLE IF NOT EXISTS products(
-	id			BIGSERIAL PRIMARY KEY,
-	"event_id" 		BIGINT,
-	quantity		INT,
-	unit_price		BIGINT,
+	id					BIGSERIAL PRIMARY KEY,
+	"event_id" 			BIGINT,
+	quantity			INT,
+	unit_price			BIGINT,
 	product_type		VARCHAR(255),
 	preview_images		VARCHAR(255),
 	"description"		VARCHAR(500),
-	discount		INT,
+	discount			INT,
 	FOREIGN KEY(event_id) REFERENCES events(id)
 );
 
 DROP TABLE IF EXISTS ticket;
 CREATE TABLE IF NOT EXISTS ticket(
-	id			BIGSERIAL PRIMARY KEY,
+	id				BIGSERIAL PRIMARY KEY,
 	"owner_id"		BIGINT,
 	"event_id" 		BIGINT NOT NULL,
 	"buyer_id"		BIGINT NOT NULL,
@@ -145,7 +140,7 @@ CREATE TABLE IF NOT EXISTS ticket(
 
 DROP TABLE IF EXISTS "comments";
 CREATE TABLE IF NOT EXISTS "comments"(
-	id			BIGSERIAL PRIMARY KEY,
+	id				BIGSERIAL PRIMARY KEY,
 	"user_id"		BIGINT NOT NULL,
 	"event_id" 		BIGINT,
 	"content"		VARCHAR(500),
@@ -167,15 +162,15 @@ execute procedure trigger_set_current_timestamp();
 
 DROP TABLE IF EXISTS "session";
 CREATE TABLE IF NOT EXISTS "session"(
-	id			BIGSERIAL PRIMARY KEY,
+	id					BIGSERIAL PRIMARY KEY,
 	"comment_id"		BIGINT,
-	"event_id" 		BIGINT NOT NULL,
+	"event_id" 			BIGINT NOT NULL,
 	"joined_users"		INT,
 	limit_number		BIGINT,
-	"name"			VARCHAR(255),
-	is_confirm		BOOLEAN,
-	is_reject		BOOLEAN,
-	is_cancel		BOOLEAN,
+	"name"				VARCHAR(255),
+	is_confirm			BOOLEAN,
+	is_reject			BOOLEAN,
+	is_cancel			BOOLEAN,
 	refund_number		BIGINT,
 	FOREIGN KEY(event_id) REFERENCES events(id),
 	FOREIGN KEY("comment_id") REFERENCES "comments"(id)
@@ -205,18 +200,18 @@ execute procedure trigger_set_current_timestamp();
 
 -- Drop all
 --drop trigger if exists set_current_timestamp on reviews;
+--drop trigger if exists set_current_timestamp on "comments";
+--drop trigger if exists set_current_timestamp on events;
+--DROP TRIGGER IF EXISTS set_current_timestamp on notifications;
+--DROP TRIGGER IF EXISTS set_current_timestamp on categories;
+--DROP TRIGGER IF EXISTS set_current_timestamp on users;
 --DROP TABLE IF EXISTS "reviews";
 --DROP TABLE IF EXISTS "session";
---drop trigger if exists set_current_timestamp on "comments";
 --DROP TABLE IF EXISTS "comments";
 --DROP TABLE IF EXISTS ticket;
 --DROP TABLE IF EXISTS products;
---drop trigger if exists set_current_timestamp on events;
 --DROP TABLE IF EXISTS event_users;
---DROP TABLE IF EXISTS events;
---DROP TRIGGER IF EXISTS set_current_timestamp on notifications;
 --DROP TABLE IF EXISTS notifications;
---DROP TRIGGER IF EXISTS set_current_timestamp on categories;
+--DROP TABLE IF EXISTS events;
 --DROP TABLE IF EXISTS categories;
---DROP TRIGGER IF EXISTS set_current_timestamp on users;
 --DROP TABLE IF EXISTS users;
