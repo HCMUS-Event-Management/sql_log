@@ -1,5 +1,5 @@
-ALTER TABLE categories
+ALTER TABLE public.categories
 DROP COLUMN description;
 
-ALTER TABLE events
-ADD COLUMN "type";
+ALTER TABLE public.events
+ADD COLUMN "type" VARCHAR(100);
