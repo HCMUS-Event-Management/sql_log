@@ -37,3 +37,17 @@
 10. 20/02/2023
 * datnd:
     - Sửa lại 1 số column các bảng trong entity service (V1.9)
+    - Xoá V1.9 và tạo folder entity (thêm V1.1 là V1.9 bản cũ)
+    - Sửa 1 số trường trong V1.1
+11. 21/02/2023
+* ntvu:
+    - Fix V1.1 error  (v1.1)
+    - Sửa bảng và add FK (v1.1)
+12. 22/02/2023
+* ntvu:
+    - thêm event_role vào bảng event_user và edit bảng user (v1.1)
+    - update bảng category (v1.1)
+13. 23/02/2023:
+* nddat:
+    - Sửa lại bảng cate, events (V1.1)
+    - Tạo V1.2 để sửa bảng cate, events 
