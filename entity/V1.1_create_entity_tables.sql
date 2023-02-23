@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS events(
 	images			    TEXT[],
 	"location"		    VARCHAR(500),
 	seating_plan		VARCHAR(500),
+	type			VARCHAR(100),
 	created_at 		    TIMESTAMP DEFAULT NOW(),
 	updated_at		    TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY(category_id) REFERENCES categories(id),
