@@ -9,3 +9,5 @@ alter table public.events alter column due_time type timestamp without time zone
 
 -- Drop the temporary column (after examining altered column values)
 alter table public.events drop column create_time_holder;
+
+alter table public.events alter column due_time set not null;
