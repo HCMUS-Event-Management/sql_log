@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS events(
 
 DROP TABLE IF EXISTS event_users;
 CREATE TABLE IF NOT EXISTS event_users(
-	id				BIGINT PRIMARY KEY,
+	id				BIGSERIAL PRIMARY KEY,
 	"user_id"		BIGINT,
 	"event_id" 		BIGINT,
 	event_role		VARCHAR(50),
