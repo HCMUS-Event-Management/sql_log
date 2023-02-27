@@ -51,3 +51,18 @@
 * nddat:
     - Sửa lại bảng cate, events (V1.1)
     - Tạo V1.2 để sửa bảng cate, events 
+14. 24/02/2023:
+* ntvu:
+    - Sửa lại type của due_time thành timestamp (V1.3)
+    - Sửa lại tên V1,2 cho đúng thành V1.2
+    - Sửa due_time not null
+15. 25/02/2023:
+* pnanh:
+    - Thêm table event vào user-auth (V1.9)
+    - migrate event vào entity service
+16. 26/02/2023:
+* pnanh:
+    - Cập nhật table event (V1.9)
+17. 27/02/2023:
+* nddat:
+    - Tạo data mẫu cho entity (V1.4)
