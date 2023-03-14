@@ -4,8 +4,6 @@ CREATE TABLE IF NOT EXISTS otp(
 	id				BIGSERIAL PRIMARY KEY,
 	user_id			BIGINT NOT NULL,
 	otp				VARCHAR(30) NOT NULL,
-	code			VARCHAR(30) NOT null,
-	"status"		VARCHAR(30) NOT NULL,
 	expired_time	TIMESTAMP NOT NULL,
 	FOREIGN KEY(user_id) REFERENCES users(id)
 );
