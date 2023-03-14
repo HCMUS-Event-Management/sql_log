@@ -1,6 +1,7 @@
 -- Create `OTP` table
 DROP TABLE IF EXISTS otp;
 CREATE TABLE IF NOT EXISTS otp(
+	id				BIGSERIAL PRIMARY KEY,
 	user_id			BIGINT NOT NULL,
 	otp				VARCHAR(30) NOT NULL,
 	code			VARCHAR(30) NOT null,
