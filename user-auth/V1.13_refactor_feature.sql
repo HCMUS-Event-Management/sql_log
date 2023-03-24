@@ -1,4 +1,7 @@
+delete from roles_permissions where id = 1;
+
 DELETE FROM feature WHERE feature_code = 'MANAGE_TICKET' or feature_code = 'MANAGE_USER' or feature_code = 'MANAGE_EVENT';
+
 
 ALTER TABLE feature
     ADD IF NOT EXISTS category varchar(255);

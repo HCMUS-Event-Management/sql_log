@@ -1,3 +1,6 @@
+alter table public.roles 
+add if not exists is_deleted boolean default false;
+
 UPDATE public.roles
     SET event_id = 0 where code = 'ADMIN' or code = 'MEMBER';
 UPDATE public.roles
@@ -10,6 +13,8 @@ UPDATE public.roles
 
 UPDATE public.roles
 SET id = 2 where code = 'ADMIN';
+
+
 insert into public.roles (id, code, name, description, is_active, is_deleted, is_default, event_id)
  values (3,'SPEAKER', 'Diễn giả', 'Diễn giả của sự kiện', true, false, true, 0 );
 
@@ -51,6 +56,6 @@ values (9, 9, 1, 'CREATED', now(), false);
 insert into public.user_roles(id, user_id, role_id, status, updated_at, is_deleted)
 values (10, 10, 1, 'CREATED', now(), false);
 
-insert into public.user_roles(user_id, role_id, status, updated_at, is_deleted)
-values ( 66, 1, 'CREATED', now(), false);
+--insert into public.user_roles(user_id, role_id, status, updated_at, is_deleted)
+--values ( 66, 1, 'CREATED', now(), false);
 
