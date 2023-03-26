@@ -10,14 +10,4 @@ ALTER TABLE public."session" DROP COLUMN refund_number;
 -- Add zoom information for session table
 ALTER TABLE public."session" ADD zoom_meeting_number varchar(20) NULL;
 ALTER TABLE public."session" ADD zoom_password varchar(10) NULL;
-
--- Create `session_user`
-drop table if exists "session_user";
-create table if not exists "session_user"(
-	id				bigserial primary key,
-	session_id		bigint,
-	user_id			bigint,
-	"role"			int,
-	foreign key(session_id) references "session"(id),
-	foreign key(user_id) references users(id)
-);
+ALTER TABLE public."session" ADD holder_id bigint NULL;
