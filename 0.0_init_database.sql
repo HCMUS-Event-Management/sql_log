@@ -1,0 +1,3 @@
+CREATE DATABASE "user-auth";
+CREATE DATABASE entity;
+CREATE DATABASE payment;
