@@ -11,12 +11,14 @@ INSERT INTO users(id, full_name, email, phone, identity_card, gender, "address",
 (9, 'Tố Hữu', 'thuu@gmail.com', '0779415023', '045211003235', 'Huế City', 'Nam', TRUE, FALSE),
 (10, 'Seraphine Mie', 'seraphine@gmail.com', '0822111444', '013215314235', 'Riot', 'Nữ', TRUE, FALSE);
 --category
-INSERT INTO categories(id, "name") VALUES
-(1, 'Công nghệ thông tin'),
-(2, 'Sinh học'),
-(3, 'Giải trí'),
-(4, 'Thể thao'),
-(5, 'Âm nhạc');
+ALTER TABLE categories
+    ADD COLUMN IF NOT EXISTS code varchar (255);
+INSERT INTO categories(id, "name", code) VALUES
+                                             (6,'Giáo dục', 'education'),
+                                             (7, 'Âm nhạc', 'music'),
+                                             (8, 'Kỉ niệm', 'anniversary'),
+                                             (9, 'Thể thao', 'sport'),
+                                             (10, 'Khác', 'other');
 --events
 INSERT INTO events(id, title, "description", open_time, due_time, start_at, end_at, status, url_web, category_id, created_by, images, "location", seating_plan, "type") VALUES
 (1, 'Sự kiện ChatGPT và AI', 'ChatGPT và AI: Thách thức và cơ hội trong giáo dục đại học', '2023-02-18 07:45:00', '2023-02-23 11:45:00', '2023-02-25 07:45:00', '2023-02-25 11:45:00', 'approve', 'url_fake/fakereal', '1', '1', NULL, 'Trường Test', 'seating test1', 'paid'),
