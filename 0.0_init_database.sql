@@ -1,3 +1,4 @@
 CREATE DATABASE "user-auth";
 CREATE DATABASE entity;
 CREATE DATABASE payment;
+CREATE DATABASE conversation IF NOT EXISTS;
