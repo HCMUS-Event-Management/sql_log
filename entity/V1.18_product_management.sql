@@ -2,6 +2,7 @@ drop table if exists "products";
 create table if not exists "products"(
 	id			bigserial primary key,
 	event_id	bigint,
+	"name"		varchar(100) not null,
 	quantity	int not null,
 	price		bigint not null,
 	discount	numeric not null constraint product_discount_range check(0 < discount and discount < 1),
