@@ -40,7 +40,6 @@ create table if not exists "notifications"(
 create table if not exists "notification_user"(
 	notification_id		bigint,
 	user_id				bigint,
-	is_read				bool not null,
 	foreign key (notification_id) references "notifications"(id) on delete cascade,
 	foreign key (user_id) references "users"(id) on delete cascade
 );
