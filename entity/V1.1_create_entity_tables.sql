@@ -200,12 +200,12 @@ create trigger set_current_timestamp
 execute procedure trigger_set_current_timestamp();
 
 -- Drop all
---drop trigger if exists set_current_timestamp on reviews;
---drop trigger if exists set_current_timestamp on "comments";
---drop trigger if exists set_current_timestamp on events;
---DROP TRIGGER IF EXISTS set_current_timestamp on notifications;
---DROP TRIGGER IF EXISTS set_current_timestamp on categories;
---DROP TRIGGER IF EXISTS set_current_timestamp on users;
+drop trigger if exists set_current_timestamp on reviews;
+drop trigger if exists set_current_timestamp on "comments";
+drop trigger if exists set_current_timestamp on events;
+DROP TRIGGER IF EXISTS set_current_timestamp on notifications;
+DROP TRIGGER IF EXISTS set_current_timestamp on categories;
+DROP TRIGGER IF EXISTS set_current_timestamp on users;
 --DROP TABLE IF EXISTS "reviews";
 --DROP TABLE IF EXISTS "session";
 --DROP TABLE IF EXISTS "comments";
