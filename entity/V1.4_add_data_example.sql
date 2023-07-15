@@ -20,6 +20,10 @@ INSERT INTO categories(id, "name", code) VALUES
                                              (9, 'Thể thao', 'sport'),
                                              (10, 'Khác', 'other');
 --events
+
+
+
+-- remove------------------------------------------------------------------------------
 INSERT INTO events(id, title, "description", open_time, due_time, start_at, end_at, status, url_web, category_id, created_by, images, "location", seating_plan, "type") VALUES
 (1, 'Sự kiện ChatGPT và AI', 'ChatGPT và AI: Thách thức và cơ hội trong giáo dục đại học', '2023-02-18 07:45:00', '2023-02-23 11:45:00', '2023-02-25 07:45:00', '2023-02-25 11:45:00', 'approve', 'url_fake/fakereal', '1', '1', NULL, 'Trường Test', 'seating test1', 'paid'),
 (2, 'Sự kiện Hội thảo', 'Metaverse: Thách thức và cơ hội trong thế giới ảo', '2023-03-20 07:45:00', '2023-03-25 10:45:00', '2023-03-29 07:30:00', '2023-03-29 10:30:00', 'waiting', 'url_fake/fakereal', '1', '2', NULL, 'Giảng đường', 'seating test2', 'paid'),

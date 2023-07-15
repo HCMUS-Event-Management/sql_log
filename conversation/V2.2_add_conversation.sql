@@ -8,7 +8,7 @@ create table if not exists "conversations"(
     last_message_sent_at    TIMESTAMP DEFAULT NOW(),
     created_at 		        TIMESTAMP DEFAULT NOW(),
     FOREIGN KEY(creator_id) REFERENCES users(id),
-    FOREIGN KEY(recipient_id) REFERENCES users(id),
+    FOREIGN KEY(recipient_id) REFERENCES users(id)
 );
 
 
